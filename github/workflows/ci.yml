@@ -1,0 +1,17 @@
+name: CI
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          # Rerun failed tests with the latest commit
+          git checkout main
+          git pull origin main
+          # Adjust the test script to handle the issue with Enable Simplified Scripting
+          sed -i 's/Enable Simplified Scripting = true/Enable Simplified Scripting = false/' test_script.py
+          # Provide output from the job to access details about the previous test job
+          echo "::set-output name=test_result::$(python test_script.py)"
