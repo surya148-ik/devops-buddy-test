@@ -1,13 +1,10 @@
-from utils import validate_inputs
+import numpy as np
 
 def add(a, b):
-    validate_inputs(a, b)
-    return a + b
+    return int(np.add(a, b))
 
 def subtract(a, b):
-    validate_inputs(a, b)
-    return a - b
+    return int(np.subtract(a, b))
 
 def multiply(a, b):
-    validate_inputs(a, b)
-    return a * b
+    return int(np.multiply(a, b))
