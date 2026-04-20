@@ -1,0 +1,19 @@
+name: CI
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          # Adjust the test script to handle the issue with Enable Simplified Scripting
+          echo 'Running tests...'
+          # Rerun failed tests with the latest commit
+          git checkout main
+          git pull origin main
+          # Run the tests
+          ./run-tests.sh
+        outputs:
+          result: ${{ steps.run-tests.outputs.result }}
