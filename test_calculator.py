@@ -18,4 +18,3 @@ def test_skewness():
     data = [1, 2, 3, 4, 5]
     skew = sp.skew(data)
     assert isinstance(skew, float)
-    
